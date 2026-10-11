@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CodeNotes | Learn Programming Basic to Advanced</title>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1b2333;--muted:#5d677a;--line:#dfe3ec;--accent:#3b5bdb;--accent-ink:#fff;--def:#e9efff;--code:#12192b;--code-ink:#e6ebf7;--out:#0f2a1d;--out-ink:#9ff0c0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--card:#151d31;--ink:#e8ecf6;--muted:#9ba6bd;--line:#26314d;--accent:#7c96ff;--accent-ink:#0e1424;--def:#1b2748}}
+:root[data-theme="dark"]{--bg:#0e1424;--card:#151d31;--ink:#e8ecf6;--muted:#9ba6bd;--line:#26314d;--accent:#7c96ff;--accent-ink:#0e1424;--def:#1b2748}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{padding:28px 20px 8px;max-width:1100px;margin:0 auto}
+.brand{font-size:1.7rem;font-weight:700;margin:0}
+.sub{color:var(--muted);margin:4px 0 18px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:10px 22px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;font-weight:600}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.app{max-width:1100px;margin:0 auto;padding:16px 20px 60px;display:grid;gap:20px}
+@media(min-width:820px){.app{grid-template-columns:270px 1fr;align-items:start}}
+nav.list{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+nav.list h3{margin:12px 8px 4px;font-size:.9rem;color:var(--muted);font-weight:600}
+nav.list h3:first-child{margin-top:4px}
+.item{display:block;width:100%;text-align:left;padding:9px 10px;border:0;background:none;color:var(--ink);border-radius:8px}
+.item:hover{background:var(--bg)}
+.item[aria-current="true"]{background:var(--def);color:var(--accent);font-weight:600}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;min-width:0}
+.badge{display:inline-block;font-size:.85rem;padding:2px 12px;border-radius:999px;background:var(--def);color:var(--accent);font-weight:600}
+article h2{font-size:clamp(1.6rem,4vw,2.1rem);line-height:1.2;margin:10px 0 18px}
+article h4{margin:26px 0 8px;font-size:1.05rem}
+.def{background:var(--def);border-left:4px solid var(--accent);padding:14px 16px;border-radius:0 10px 10px 0;margin:0}
+article p{margin:0;max-width:68ch}
+pre{margin:0;padding:16px;background:var(--code);color:var(--code-ink);border-radius:10px;overflow-x:auto;font:.92rem/1.6 ui-monospace,Menlo,Consolas,monospace}
+pre.out{background:var(--out);color:var(--out-ink);margin-top:8px}
+.copy{float:right;margin:0 0 6px 8px;padding:4px 12px;font-size:.85rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:30px}
+.pn button{padding:11px 20px;border-radius:10px;border:1px solid var(--accent);background:none;color:var(--accent);font-weight:600}
+.pn button:last-child{background:var(--accent);color:var(--accent-ink)}
+.pn button:disabled{opacity:.35;cursor:default}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes glow{from{box-shadow:0 0 0 0 rgba(124,150,255,.5)}to{box-shadow:0 0 0 12px rgba(124,150,255,0)}}
+header>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+header>:nth-child(2){animation-delay:.1s}header>:nth-child(3){animation-delay:.2s}
+.app{animation:rise .7s .3s cubic-bezier(.2,.7,.2,1) both}
+article>*{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.tab{transition:background .25s,color .25s,transform .2s}
+.tab:hover{transform:translateY(-2px)}
+.item{transition:background .2s,padding-left .2s,color .2s}
+.item:hover{padding-left:16px}
+.pn button,.copy{transition:transform .2s,background .2s,opacity .2s}
+.pn button:not(:disabled):hover,.copy:hover{transform:translateY(-2px)}
+.pn button:not(:disabled):active,.copy:active{transform:scale(.96)}
+.copy:focus-visible{animation:glow .8s}
+@media(prefers-reduced-motion:reduce){header>*,.app,article>*{animation:none}.tab,.item,.pn button,.copy{transition:none}.tab:hover,.pn button:hover,.copy:hover{transform:none}.item:hover{padding-left:10px}}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="brand">CodeNotes</h1>
+  <p class="sub">Programming notes from basic to advanced, with simple definitions and examples.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+</header>
+<div class="app">
+  <nav class="list" id="list" aria-label="Topics"></nav>
+  <article id="doc"></article>
+</div>
+<script>
+const R=String.raw;
+const LV=['Basic','Intermediate','Advanced'];
+const C={
+Python:[
+['Variables and data types','Basic','A variable is a name that stores a value in memory.','Python decides the data type itself. Common types are int (whole numbers), float (decimals), str (text) and bool (True or False). Use type() to check a type.',R`name = "Asha"
+age = 20
+height = 5.4
+print(name, age, height)
+print(type(age))`,R`Asha 20 5.4
+<class 'int'>`],
+['If and else','Basic','A condition is a question that is either True or False. if runs code only when the answer is True.','Python uses indentation (4 spaces) to mark which lines belong to the if. else runs when the condition is False. elif checks another condition in between.',R`age = 18
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")`,R`Adult`],
+['Functions and lists','Intermediate','A function is a reusable block of code with a name. A list holds many values in order.','Define a function with def and send back a result with return. A list comprehension builds a new list in one line by applying an expression to each item.',R`def square(n):
+    return n * n
+
+nums = [1, 2, 3]
+print([square(x) for x in nums])`,R`[1, 4, 9]`],
+['Classes and objects','Advanced','A class is a blueprint. An object is one thing made from that blueprint.','__init__ runs when an object is created and sets its starting data. self means "this object". Methods are functions inside a class.',R`class Student:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        return "Hi, " + self.name
+
+s = Student("Ravi")
+print(s.greet())`,R`Hi, Ravi`]],
+Java:[
+['Structure of a Java program','Basic','A Java program is written inside a class, and it starts running from the main method.','The file name must match the public class name. System.out.println prints text and moves to a new line. Every statement ends with a semicolon.',R`public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}`,R`Hello, Java!`],
+['Variables and loops','Basic','A loop repeats a block of code until its condition becomes false.','Java needs the type before the variable name, such as int or String. A for loop has three parts: start, condition, and step.',R`for (int i = 1; i <= 3; i++) {
+    System.out.println("Count " + i);
+}`,R`Count 1
+Count 2
+Count 3`],
+['Methods and arrays','Intermediate','A method is a named block of code. An array stores many values of the same type.','Arrays have a fixed size and start at index 0. A method states its return type, such as int, or void when it returns nothing.',R`static int add(int a, int b) {
+    return a + b;
+}
+
+int[] marks = {80, 90, 70};
+System.out.println(add(marks[0], marks[1]));`,R`170`],
+['Inheritance','Advanced','Inheritance lets one class reuse and change the features of another class.','The child class uses extends. Overriding means the child gives its own version of a method from the parent.',R`class Animal {
+    void sound() { System.out.println("Sound"); }
+}
+class Dog extends Animal {
+    void sound() { System.out.println("Bark"); }
+}
+// new Dog().sound();`,R`Bark`]],
+C:[
+['Structure of a C program','Basic','A C program starts from main(). Header files like stdio.h give you ready-made functions.','#include adds a header file. printf prints text. \\n moves to a new line. return 0 tells the system the program ended well.',R`#include <stdio.h>
+
+int main() {
+    printf("Hello, C!\n");
+    return 0;
+}`,R`Hello, C!`],
+['Data types and input','Basic','A data type tells C what kind of value a variable holds, such as int, float or char.','Format codes connect values to printf and scanf: %d for int, %f for float, %c for char. scanf needs & before the variable name.',R`int age;
+scanf("%d", &age);
+printf("Age is %d", age);`,R`(input 20)
+Age is 20`],
+['Pointers','Intermediate','A pointer is a variable that stores the memory address of another variable.','& gives the address of a variable. * reads the value stored at that address. Pointers let functions change the original variables.',R`int a = 10;
+int *p = &a;
+printf("%d", *p);`,R`10`],
+['Structures','Advanced','A structure groups different types of data under one name.','Use struct to model real things, such as a student with an id and a name. Access each member with the dot operator.',R`struct Student {
+    int id;
+    char name[20];
+};
+struct Student s = {1, "Meena"};
+printf("%d %s", s.id, s.name);`,R`1 Meena`]]};
+let cur='Python',idx=0;
+const $=id=>document.getElementById(id);
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function render(){
+  const T=$('tabs');T.replaceChildren();
+  Object.keys(C).forEach(k=>{const b=el('button','tab',k);b.setAttribute('role','tab');b.setAttribute('aria-selected',k===cur);b.onclick=()=>{cur=k;idx=0;render()};T.append(b)});
+  const L=$('list');L.replaceChildren();
+  LV.forEach(l=>{const its=C[cur].map((t,i)=>[t,i]).filter(x=>x[0][1]===l);if(!its.length)return;L.append(el('h3',null,l));
+    its.forEach(([t,i])=>{const b=el('button','item',t[0]);b.setAttribute('aria-current',i===idx);b.onclick=()=>{idx=i;render();$('doc').scrollIntoView({block:'start'})};L.append(b)})});
+  const t=C[cur][idx],D=$('doc');D.replaceChildren();
+  D.append(el('span','badge',t[1]),el('h2',null,t[0]),el('h4',null,'Definition'),el('p','def',t[2]),el('h4',null,'Explanation'),el('p',null,t[3]),el('h4',null,'Example'));
+  const cp=el('button','copy','Copy');cp.onclick=()=>{try{navigator.clipboard.writeText(t[4]);cp.textContent='Copied'}catch(e){cp.textContent='Select to copy'}setTimeout(()=>cp.textContent='Copy',1500)};
+  D.append(cp,el('pre',null,t[4]),el('h4',null,'Output'),el('pre','out',t[5]));
+  const n=el('div','pn'),p=el('button',null,'Previous'),x=el('button',null,'Next');
+  p.disabled=idx===0;x.disabled=idx===C[cur].length-1;p.onclick=()=>{idx--;render();D.scrollIntoView()};x.onclick=()=>{idx++;render();D.scrollIntoView()};
+  n.append(p,x);D.append(n);[...D.children].forEach((c,i)=>{c.style.animationDelay=Math.min(i,10)*50+'ms'});
+}
+render();
+</script>
+</body>
+</html>
